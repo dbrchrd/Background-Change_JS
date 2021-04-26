@@ -31,16 +31,19 @@
   border-radius: 25px;
   text-transform: uppercase;
 }
+
 #res-hex {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
+
 #res-rgb {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
+
 .res:hover {
   transition: .3s;
   /* cursor: copy; */
