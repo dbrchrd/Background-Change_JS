@@ -50,6 +50,7 @@
   cursor: auto;
   border-radius: 25px;
 }
+
 #btn {
   transition: .5s;
   font-size: 33px;
@@ -64,6 +65,7 @@
   cursor: pointer;
   text-align: center;
 }
+
 #btn:hover {
   transition: 1s;
   color: rgba(255, 255, 255, 0);
