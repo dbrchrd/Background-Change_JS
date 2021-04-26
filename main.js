@@ -1,5 +1,4 @@
 console.log("main.js is running");
-
 window.onload = function () {
   var buttonChange = document.getElementById('btn');
   var hexColour = document.getElementById('res-hex')
@@ -40,13 +39,7 @@ window.onload = function () {
       document.querySelectorAll(".res").style.background = "#000";
     }
   }
-  // hexColour.onclick = function () {
-  //   var copyText = document.getElementById("res-hex");
-  //   copyText.select();
-  //   copyText.setSelectionRange(0, 99999)
-  //   document.execCommand("copy");
-  //   alert("Copied the text: " + copyText.value);
-  // }
+
   const copyElement = document.querySelector(".res");
   copyElement.addEventListener("mouseover", event => {
     console.log("Mouse in");
