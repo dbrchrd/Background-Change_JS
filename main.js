@@ -12,9 +12,9 @@ window.onload = function () {
     function rgbToHex(r, g, b) {
       return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
     }
-    var r = getRandomInt(200, 255);
-    var g = getRandomInt(200, 255);
-    var b = getRandomInt(200, 255);
+    var r = getRandomInt(0, 255);
+    var g = getRandomInt(0, 255);
+    var b = getRandomInt(0, 255);
 
     console.log("Red : "+r);
     console.log("Green : "+g);
