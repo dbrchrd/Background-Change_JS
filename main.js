@@ -27,13 +27,12 @@ window.onload = function () {
     rgbColour.innerHTML = r + "|" + g + "|" + b;
     document.getElementById("res").style.transition = "1s";
 
-    if (r < 50 && g < 50 && b < 50) {
+    if (r + g + b <= 255) {
       document.getElementById("btn").style.color = "#fff";
       document.getElementById("res").style.color = "#fff";
-    }else {
+    } else {
       document.getElementById("btn").style.color = "#000";
       document.getElementById("res").style.color = "#000";
-
     }
     if (r > 50 && g > 50 && b > 50) {
       document.querySelectorAll(".res").style.background = "#000";
