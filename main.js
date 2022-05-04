@@ -1,8 +1,8 @@
 console.log("main.js is running");
 window.onload = function () {
-  var buttonChange = document.getElementById('btn');
-  var hexColour = document.getElementById('res-hex')
-  var rgbColour = document.getElementById('res-rgb')
+  var buttonChange = document.getElementById("btn");
+  var hexColour = document.getElementById("res-hex");
+  var rgbColour = document.getElementById("res-rgb");
 
   buttonChange.onclick = function () {
     console.log("clicked");
@@ -16,12 +16,13 @@ window.onload = function () {
     var g = getRandomInt(0, 255);
     var b = getRandomInt(0, 255);
 
-    console.log("Red : "+r);
-    console.log("Green : "+g);
-    console.log("Blue : "+b);
-    console.log("Hex : "+rgbToHex(r, g, b));
+    console.log("Red : " + r);
+    console.log("Green : " + g);
+    console.log("Blue : " + b);
+    console.log("Hex : " + rgbToHex(r, g, b));
 
-    document.getElementById("main").style.background = "rgb("+r+","+g+","+b+")";
+    document.getElementById("main").style.background =
+      "rgb(" + r + "," + g + "," + b + ")";
     document.getElementById("main").style.transition = ".7s";
     hexColour.innerHTML = rgbToHex(r, g, b);
     rgbColour.innerHTML = r + "|" + g + "|" + b;
@@ -37,15 +38,14 @@ window.onload = function () {
     if (r > 50 && g > 50 && b > 50) {
       document.querySelectorAll(".res").style.background = "#000";
     }
-  }
+  };
 
   const copyElement = document.querySelector(".res");
-  copyElement.addEventListener("mouseover", event => {
+  copyElement.addEventListener("mouseover", (event) => {
     console.log("Mouse in");
   });
 
-  copyElement.addEventListener("mouseout", event => {
+  copyElement.addEventListener("mouseout", (event) => {
     console.log("Mouse out");
   });
-
-}
+};
