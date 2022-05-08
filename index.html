@@ -11,11 +11,16 @@
 
 <body>
   <main id="main">
-    <p id="res">
-      <span id="res-hex" class="res">#FA8072</span>
-      <br>
-      <span id="res-rgb" class="res">250|128|114</span>
-    </p>
+    <div id="res">
+      <div id="res-hex" class="res">
+        #<input type="text" value="FA8072">
+      </div>
+      <div id="res-rgb" class="res">
+        <label for="red-input">Red : </label><input name="red-input" type="number" value="250">
+        <label for="green-input">Green : </label><input name="green-input" type="number" value="128">
+        <label for="blue-input">Blue : </label><input name="blue-input" type="number" value="114">
+      </div>
+    </div>
     <button id="btn" type="button">Change Background</button>
   </main>
 
