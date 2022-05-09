@@ -2,6 +2,7 @@ console.log("main.js is running");
 window.onload = function () {
   let main = document.querySelector("main#main");
   let button = document.querySelector("#btn");
+  let res_container = document.querySelector("#res");
   let hex_input = document.querySelector("#res-hex input");
   let rgb_input = document.querySelector("#res-rgb");
   let r_input = document.querySelector("#res-rgb input[name=red-input]");
@@ -26,19 +27,19 @@ window.onload = function () {
     console.log("Hex : " + rgbToHex(r, g, b));
 
     main.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
-    main.style.transition = ".7s";
+    // main.style.transition = ".7s";
     hex_input.value = rgbToHex(r, g, b);
     r_input.value = r;
     g_input.value = g;
     b_input.value = b;
-    document.getElementById("res").style.transition = "1s";
+    res_container.style.transition = "1s";
 
     if (r + g + b <= 255) {
-      document.getElementById("btn").style.color = "#fffA";
-      document.getElementById("res").style.color = "#fff";
+      button.style.color = "#fffA";
+      res_container.style.color = "#fff";
     } else {
-      document.getElementById("btn").style.color = "#000";
-      document.getElementById("res").style.color = "#000";
+      button.style.color = "#000";
+      res_container.style.color = "#000";
     }
   };
 
