@@ -9,14 +9,16 @@ window.onload = function () {
   let g_input = document.querySelector("#res-rgb input[name=green-input]");
   let b_input = document.querySelector("#res-rgb input[name=blue-input]");
 
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+  function rgbToHex(r, g, b) {
+    return ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+  }
+
   button.onclick = function () {
     console.log("clicked");
-    function getRandomInt(min, max) {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-    function rgbToHex(r, g, b) {
-      return ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
-    }
+
     var r = getRandomInt(0, 255);
     var g = getRandomInt(0, 255);
     var b = getRandomInt(0, 255);
@@ -27,7 +29,6 @@ window.onload = function () {
     console.log("Hex : " + rgbToHex(r, g, b));
 
     main.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
-    // main.style.transition = ".7s";
     hex_input.value = rgbToHex(r, g, b);
     r_input.value = r;
     g_input.value = g;
