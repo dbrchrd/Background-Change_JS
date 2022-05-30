@@ -3,7 +3,7 @@ window.onload = function () {
   let main = document.querySelector("main#main");
   let button = document.querySelector("#btn");
   let res_container = document.querySelector("#res");
-  let hex_input = document.querySelector("#res-hex input");
+  let hex_input = document.querySelector("#res-hex input[name=hex-input");
   let rgb_input = document.querySelector("#res-rgb");
   let r_input = document.querySelector("#res-rgb input[name=red-input]");
   let g_input = document.querySelector("#res-rgb input[name=green-input]");
@@ -13,29 +13,50 @@ window.onload = function () {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
   function rgbToHex(r, g, b) {
-    return ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+    parseInt(r, 10) === null ? (r = 0) : null;
+
+    r = parseInt(r, 10).toString(16);
+    g = parseInt(g, 10).toString(16);
+    b = parseInt(b, 10).toString(16);
+    if (r.length == 1) r = "0" + r;
+    if (g.length == 1) g = "0" + g;
+    if (b.length == 1) b = "0" + b;
+    return r + g + b;
+    // return (1 << 24) + (r << 16) + (g << 8) + b;
   }
 
-  button.onclick = function () {
-    console.log("clicked");
+  const updateColor = (el, hex, [r, g, b]) => {
+    var numberPattern = /\d+/g;
+    // console.log(
+    //   ">>",
+    //   r.match(numberPattern).join(""),
+    //   g.match(numberPattern).join(""),
+    //   b.match(numberPattern).join("")
+    // );
+    // console.log(
+    //   "rgb(" +
+    //     r +
+    //     "," +
+    //     g +
+    //     "," +
+    //     b +
+    //     ")" +
+    //     "   |   Hex : " +
+    //     rgbToHex(r, g, b) +
+    //     "   |   " +
+    //     el.name
+    // );
 
-    var r = getRandomInt(0, 255);
-    var g = getRandomInt(0, 255);
-    var b = getRandomInt(0, 255);
+    r_input.value = r.match(numberPattern).join("");
+    g_input.value = g.match(numberPattern).join("");
+    b_input.value = b.match(numberPattern).join("");
 
-    console.log("Red : " + r);
-    console.log("Green : " + g);
-    console.log("Blue : " + b);
-    console.log("Hex : " + rgbToHex(r, g, b));
-
-    main.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
     hex_input.value = rgbToHex(r, g, b);
-    r_input.value = r;
-    g_input.value = g;
-    b_input.value = b;
+    main.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
+
     res_container.style.transition = "1s";
 
-    if (r + g + b <= 255) {
+    if (parseInt(r, 10) + parseInt(g, 10) + parseInt(b, 10) <= 255) {
       button.style.color = "#fffA";
       res_container.style.color = "#fff";
     } else {
@@ -44,12 +65,37 @@ window.onload = function () {
     }
   };
 
-  const copyElement = document.querySelector(".res");
-  copyElement.addEventListener("mouseover", (event) => {
-    console.log("Mouse in");
+  button.onclick = function () {
+    console.log("clicked");
+    updateColor(button, null, [null, null, null]);
+  };
+
+  document.querySelectorAll(".res input").forEach((el) => {
+    el.name !== "hex-input" ? (el.value = 0) : (el.value = "000000");
+    r_input.value = 0;
+    g_input.value = 0;
+    b_input.value = 0;
+    updateColor(el, null, [r_input.value, g_input.value, b_input.value]);
+
+    el.addEventListener("keyup", () => {
+      el.value === "" ? (el.value = 0) : 0;
+      if (el.name === "hex-input") {
+        updateColor(el, hex_input.value, [null, null, null]);
+      } else {
+        updateColor(el, null, [r_input.value, g_input.value, b_input.value]);
+      }
+    });
+    el.addEventListener("click", () => {
+      el.ariaSelected = true;
+    });
   });
 
-  copyElement.addEventListener("mouseout", (event) => {
-    console.log("Mouse out");
-  });
+  // const copyElement = document.querySelector(".res");
+  // copyElement.addEventListener("mouseover", (event) => {
+  //   console.log("Mouse in");
+  // });
+
+  // copyElement.addEventListener("mouseout", (event) => {
+  //   console.log("Mouse out");
+  // });
 };
