@@ -1,10 +1,8 @@
 console.log("main.js is running");
 window.onload = function () {
   let main = document.querySelector("main#main");
-  let button = document.querySelector("#btn");
   let res_container = document.querySelector("#res");
   let hex_input = document.querySelector("#res-hex input[name=hex-input");
-  let rgb_input = document.querySelector("#res-rgb");
   let r_input = document.querySelector("#res-rgb input[name=red-input]");
   let g_input = document.querySelector("#res-rgb input[name=green-input]");
   let b_input = document.querySelector("#res-rgb input[name=blue-input]");
@@ -89,13 +87,4 @@ window.onload = function () {
       el.ariaSelected = true;
     });
   });
-
-  // const copyElement = document.querySelector(".res");
-  // copyElement.addEventListener("mouseover", (event) => {
-  //   console.log("Mouse in");
-  // });
-
-  // copyElement.addEventListener("mouseout", (event) => {
-  //   console.log("Mouse out");
-  // });
 };
