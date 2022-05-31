@@ -77,11 +77,9 @@ window.onload = function () {
 
     el.addEventListener("keyup", () => {
       el.value === "" ? (el.value = 0) : 0;
-      if (el.name === "hex-input") {
-        updateColor(el, hex_input.value, [null, null, null]);
-      } else {
-        updateColor(el, null, [r_input.value, g_input.value, b_input.value]);
-      }
+      el.name === "hex-input"
+        ? updateColor(el, hex_input.value, [null, null, null])
+        : updateColor(el, null, [r_input.value, g_input.value, b_input.value]);
     });
     el.addEventListener("click", () => {
       el.ariaSelected = true;
