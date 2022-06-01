@@ -54,13 +54,9 @@ window.onload = function () {
 
     res_container.style.transition = "1s";
 
-    if (parseInt(r, 10) + parseInt(g, 10) + parseInt(b, 10) <= 255) {
-      button.style.color = "#fffA";
-      res_container.style.color = "#fff";
-    } else {
-      button.style.color = "#000";
-      res_container.style.color = "#000";
-    }
+    parseInt(r, 10) + parseInt(g, 10) + parseInt(b, 10) <= 255
+      ? (res_container.style.color = "#fff")
+      : (res_container.style.color = "#000");
   };
 
   document.querySelectorAll(".res input").forEach((el) => {
