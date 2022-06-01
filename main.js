@@ -63,11 +63,6 @@ window.onload = function () {
     }
   };
 
-  button.onclick = function () {
-    console.log("clicked");
-    updateColor(button, null, [null, null, null]);
-  };
-
   document.querySelectorAll(".res input").forEach((el) => {
     el.name !== "hex-input" ? (el.value = 0) : (el.value = "000000");
     r_input.value = 0;
