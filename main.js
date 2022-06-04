@@ -1,11 +1,11 @@
 console.log("main.js is running");
 window.onload = function () {
-  let main = document.querySelector("main#main");
-  let res_container = document.querySelector("#res");
-  let hex_input = document.querySelector("#res-hex input[name=hex-input");
-  let r_input = document.querySelector("#res-rgb input[name=red-input]");
-  let g_input = document.querySelector("#res-rgb input[name=green-input]");
-  let b_input = document.querySelector("#res-rgb input[name=blue-input]");
+  let main = document.querySelector("main#main"),
+    res_container = document.querySelector("#res"),
+    hex_input = document.querySelector("#res-hex input[name=hex-input"),
+    r_input = document.querySelector("#res-rgb input[name=red-input]"),
+    g_input = document.querySelector("#res-rgb input[name=green-input]"),
+    b_input = document.querySelector("#res-rgb input[name=blue-input]");
 
   function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -61,9 +61,7 @@ window.onload = function () {
 
   document.querySelectorAll(".res input").forEach((el) => {
     el.name !== "hex-input" ? (el.value = 0) : (el.value = "000000");
-    r_input.value = 0;
-    g_input.value = 0;
-    b_input.value = 0;
+    r_input.value = g_input.value = b_input.value = 0;
     updateColor(el, null, [r_input.value, g_input.value, b_input.value]);
 
     el.addEventListener("keyup", () => {
