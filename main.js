@@ -23,13 +23,24 @@ window.onload = function () {
     // return (1 << 24) + (r << 16) + (g << 8) + b;
   }
 
-  const updateColor = (el, hex, [r, g, b]) => {
+  function hexToRgb(hex) {
+    r = parseInt(hex[0] + hex[1], 16).toString(10);
+    g = parseInt(hex[2] + hex[3], 16).toString(10);
+    b = parseInt(hex[4] + hex[5], 16).toString(10);
+    /* if (r.length == 1) r = "0" + r;
+    if (g.length == 1) g = "0" + g;
+    if (b.length == 1) b = "0" + b; */
+    return [r, g, b];
+    // return (1 << 24) + (r << 16) + (g << 8) + b;
+  }
+
+  const updateRGBColor = (el, hex, [r, g, b]) => {
     var numberPattern = /\d+/g;
     // console.log(
     //   ">>",
-    //   r.match(numberPattern).join(""),
-    //   g.match(numberPattern).join(""),
-    //   b.match(numberPattern).join("")
+    r = r.match(numberPattern).join("");
+    g = g.match(numberPattern).join("");
+    b = b.match(numberPattern).join("");
     // );
     // console.log(
     //   "rgb(" +
@@ -58,17 +69,37 @@ window.onload = function () {
       ? (res_container.style.color = "#fff")
       : (res_container.style.color = "#000");
   };
+  const updateHEXColor = (el, hex, [r, g, b]) => {
+    r = hexToRgb(hex)[0];
+    g = hexToRgb(hex)[1];
+    b = hexToRgb(hex)[2];
+    console.log(hex_input.value, hexToRgb(hex));
+    r_input.value = r;
+    g_input.value = g;
+    b_input.value = b;
+    main.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
+
+    res_container.style.transition = "1s";
+
+    parseInt(r, 10) + parseInt(g, 10) + parseInt(b, 10) <= 255
+      ? (res_container.style.color = "#fff")
+      : (res_container.style.color = "#000");
+  };
 
   document.querySelectorAll(".res input").forEach((el) => {
     el.name !== "hex-input" ? (el.value = 0) : (el.value = "000000");
     r_input.value = g_input.value = b_input.value = 0;
-    updateColor(el, null, [r_input.value, g_input.value, b_input.value]);
+    updateRGBColor(el, null, [r_input.value, g_input.value, b_input.value]);
 
     el.addEventListener("keyup", () => {
       el.value === "" ? (el.value = 0) : 0;
       el.name === "hex-input"
-        ? updateColor(el, hex_input.value, [null, null, null])
-        : updateColor(el, null, [r_input.value, g_input.value, b_input.value]);
+        ? updateHEXColor(el, hex_input.value, [null, null, null])
+        : updateRGBColor(el, null, [
+            r_input.value,
+            g_input.value,
+            b_input.value,
+          ]);
     });
     el.addEventListener("click", () => {
       el.ariaSelected = true;
