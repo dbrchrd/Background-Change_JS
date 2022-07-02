@@ -27,11 +27,7 @@ window.onload = function () {
     r = parseInt(hex[0] + hex[1], 16).toString(10);
     g = parseInt(hex[2] + hex[3], 16).toString(10);
     b = parseInt(hex[4] + hex[5], 16).toString(10);
-    /* if (r.length == 1) r = "0" + r;
-    if (g.length == 1) g = "0" + g;
-    if (b.length == 1) b = "0" + b; */
     return [r, g, b];
-    // return (1 << 24) + (r << 16) + (g << 8) + b;
   }
 
   const updateRGBColor = (el, hex, [r, g, b]) => {
