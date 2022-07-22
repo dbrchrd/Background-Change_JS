@@ -32,25 +32,9 @@ window.onload = function () {
 
   const updateRGBColor = (el, hex, [r, g, b]) => {
     var numberPattern = /\d+/g;
-    // console.log(
-    //   ">>",
     r = r.match(numberPattern).join("");
     g = g.match(numberPattern).join("");
     b = b.match(numberPattern).join("");
-    // );
-    // console.log(
-    //   "rgb(" +
-    //     r +
-    //     "," +
-    //     g +
-    //     "," +
-    //     b +
-    //     ")" +
-    //     "   |   Hex : " +
-    //     rgbToHex(r, g, b) +
-    //     "   |   " +
-    //     el.name
-    // );
 
     r_input.value = r.match(numberPattern).join("");
     g_input.value = g.match(numberPattern).join("");
@@ -69,6 +53,7 @@ window.onload = function () {
     r = hexToRgb(hex)[0];
     g = hexToRgb(hex)[1];
     b = hexToRgb(hex)[2];
+
     console.log(hex_input.value, hexToRgb(hex));
     r_input.value = r;
     g_input.value = g;
