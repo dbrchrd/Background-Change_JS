@@ -36,9 +36,15 @@ window.onload = function () {
     g = g.match(numberPattern).join("");
     b = b.match(numberPattern).join("");
 
-    r_input.value = r.match(numberPattern).join("");
-    g_input.value = g.match(numberPattern).join("");
-    b_input.value = b.match(numberPattern).join("");
+    r.match(numberPattern).join("") > 255
+      ? (r_input.value = 255)
+      : (r_input.value = r.match(numberPattern).join(""));
+    g.match(numberPattern).join("") > 255
+      ? (g_input.value = 255)
+      : (g_input.value = g.match(numberPattern).join(""));
+    b.match(numberPattern).join("") > 255
+      ? (b_input.value = 255)
+      : (b_input.value = b.match(numberPattern).join(""));
 
     hex_input.value = rgbToHex(r, g, b);
     main.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
